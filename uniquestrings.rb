@@ -7,15 +7,11 @@ def first_uniq_with_hash(array)
 end
 
 def first_uniq_match(array)
-  array.each_with_index do |element, index|
-    match = element
-    slice = array[index+1..-1]
-    puts "match=#{match}", "slice=#{slice}", match(match, slice)
-
-    if not match(match, slice)
-      return match
+  array.each do |element|
+    count = array.count(element)
+    if count == 1
+      return element
     end
-
   end
 end
 
