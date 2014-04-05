@@ -10,7 +10,7 @@ class HQueue
   end
 
   def recent_elements
-    [@second_most_recent, @most_recent]
+    [@most_recent, @second_most_recent]
   end
 
 end
