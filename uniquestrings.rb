@@ -13,7 +13,7 @@ def first_uniq_with_hash(array)
 end
 
 # Approach 2: For each element, find if there is a match in the rest of the array
-# O(n^2) time
+# O(n**2) time
 # O(1) space
 
 def first_uniq_match(array)
