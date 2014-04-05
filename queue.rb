@@ -9,9 +9,5 @@ class HQueue
     @most_recent = el
   end
 
-  def count
-    @elements.count
-  end
-
 end
 
