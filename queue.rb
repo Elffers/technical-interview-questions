@@ -7,9 +7,9 @@ class HQueue
 
   def add_element(el)
     if el != @elements.last
-      @elements << el
+      @elements.push(el)
       if @elements.count > 2
-        @elements = @elements.pop(2)
+        @elements.shift(1)
       end
     end
   end
