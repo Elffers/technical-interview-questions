@@ -5,8 +5,10 @@ class HQueue
   end
 
   def add_element(el)
-    @second_most_recent = @most_recent
-    @most_recent = el
+    if el != @most_recent
+      @second_most_recent = @most_recent
+      @most_recent = el
+    end
   end
 
   def recent_elements
