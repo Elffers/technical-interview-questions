@@ -1,5 +1,5 @@
 class HQueue
-  attr_accessor :elements
+  attr_accessor :elements, :size
 
   def initialize(size)
     @elements = Array.new
@@ -7,7 +7,7 @@ class HQueue
   end
 
   def add_element(el)
-    if el != @elements.last
+    if not @elements.include?(el)
       @elements.push(el)
     end
     resize
