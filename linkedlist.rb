@@ -16,6 +16,7 @@ class LinkedList
   def to_a
     current = @head
     output = []
+    return [] unless current
     while current.next
       output << current.value
       current = current.next
@@ -37,6 +38,12 @@ class LinkedList
       cons(value)
     end
     self
+  end
+
+  def pop
+    value = @head.value
+    @head = @head.next
+    value
   end
 end
 
