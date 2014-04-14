@@ -23,6 +23,21 @@ class LinkedList
     output << current.value
     output
   end
+
+  def insert(value)
+    current = @head
+    previous = nil
+    while current && value <= current.value
+      previous = current
+      current = current.next
+    end
+    if previous
+      previous.next = Node.new(value, current)
+    else
+      cons(value)
+    end
+    self
+  end
 end
 
 class Node

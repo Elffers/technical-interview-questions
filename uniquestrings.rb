@@ -18,19 +18,11 @@ end
 
 def first_uniq_match(array)
   array.each do |element|
-    count = array.count(element)
-    if count == 1
+    if array.count(element) == 1
       return element
     end
   end
 end
 
-def match(match, array)
-  result = false
-  for el in array
-    if el == match
-      result = true
-    end
-  end
-  result
-end
+
+
