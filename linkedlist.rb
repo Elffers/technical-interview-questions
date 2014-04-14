@@ -45,6 +45,10 @@ class LinkedList
     @head = @head.next
     value
   end
+
+  def empty?
+    @head == nil
+  end
 end
 
 class Node

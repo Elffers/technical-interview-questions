@@ -31,10 +31,21 @@ describe LinkedList do
     end
   end
 
-  context '.to_a' do
+  context '#to_a' do
     it 'returns [] on an empty list' do
       list.pop
       expect(list.to_a).to eq []
+    end
+  end
+
+  context '#empty?' do
+    it 'returns true for an empty list' do
+      list.pop
+      expect(list.empty?).to eq true
+    end
+
+    it 'returns false for non-empty list' do
+      expect(list.empty?).to eq false
     end
   end
 
