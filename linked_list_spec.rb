@@ -26,7 +26,6 @@ describe LinkedList do
       list.insert(4)
       expect(list.to_a).to eq [5, 4, 3]
     end
-
   end
 
   context '#pop' do
@@ -39,7 +38,6 @@ describe LinkedList do
       list.pop
       expect { list.pop }.to raise_error LinkedList::EmptyError
     end
-
   end
 
   context '#to_a' do
@@ -59,6 +57,4 @@ describe LinkedList do
       expect(list.empty?).to eq false
     end
   end
-
-
 end
