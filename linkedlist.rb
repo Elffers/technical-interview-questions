@@ -2,6 +2,9 @@
 
 class LinkedList
 
+  class EmptyError < RuntimeError
+  end
+
   attr_accessor :head
 
   def initialize(value, pointer)
@@ -44,12 +47,16 @@ class LinkedList
 
   # Removes and returns the first value in the list
   def pop
-    value = @head.value
-    @head = @head.next
-    value
+    if self.empty?
+      raise EmptyError
+    else
+      value = @head.value
+      @head = @head.next
+      value
+    end
   end
 
-  # Returns true if list is empty. This is only for the tests, because Eric made me.
+  # Returns true if list is empty.
   def empty?
     @head == nil
   end
