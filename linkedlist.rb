@@ -25,6 +25,8 @@ class LinkedList
     output
   end
 
+  # Inserts a new node in order from greatest to least
+
   def insert(value)
     current = @head
     previous = nil
@@ -40,12 +42,14 @@ class LinkedList
     self
   end
 
+  # Removes and returns the first value in the list
   def pop
     value = @head.value
     @head = @head.next
     value
   end
 
+  # Returns true if list is empty. This is only for the tests, because Eric made me.
   def empty?
     @head == nil
   end
