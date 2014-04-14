@@ -27,14 +27,14 @@ describe LinkedList do
 
     it 'pops the first node' do
       expect(list.pop).to eq 5
-      expect(list.to_a).to eq []
+      expect(list).to be_empty
     end
   end
 
   context '#to_a' do
     it 'returns [] on an empty list' do
       list.pop
-      expect(list.to_a).to eq []
+      expect(list).to be_empty
     end
   end
 

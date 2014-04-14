@@ -49,6 +49,7 @@ class LinkedList
   def empty?
     @head == nil
   end
+
 end
 
 class Node
