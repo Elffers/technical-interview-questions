@@ -15,8 +15,16 @@ class HString
     @str = str
   end
 
-  def hreverse
+  def reverse
     return @str if @str.length == 1
+    array = @str.chars
+    rev = []
+    last_index = array.length - 1
+    while last_index >= 0
+      rev.push array[last_index]
+      last_index -=1
+    end
+    rev.join
   end
 end
 
