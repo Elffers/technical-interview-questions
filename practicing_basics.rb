@@ -1,3 +1,4 @@
+# Playing with .next
 
 def next_n_entries(string, iterations)
   array = []
@@ -7,3 +8,15 @@ def next_n_entries(string, iterations)
   end
   array
 end
+
+# Writing .reverse from scratch
+class HString
+  def initialize(str)
+    @str = str
+  end
+
+  def hreverse
+    return @str if @str.length == 1
+  end
+end
+
