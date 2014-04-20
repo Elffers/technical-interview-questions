@@ -4,7 +4,9 @@ class BinarySearch
     @array = array
   end
 
-  def binary_search(needle, low=0, high = @array.length - 1)
+# TODO: write it not recursively and benchmark
+
+  def binary_search(needle, low=0, high=@array.length - 1)
     if low == high
       return high if needle == @array[high]
       return
@@ -19,6 +21,5 @@ class BinarySearch
       low = middle + 1
       binary_search(needle, low, high)
     end
-
   end
 end
