@@ -24,5 +24,17 @@ def first_uniq_match(array)
   end
 end
 
+def first_uniq(array)
+  sorted = array.sort
+  bs = BinarySearch.new(sorted)
+  array.each do |el|
+    index = bs.binary_search(el)
+p bs.array[index - 1, 3]
+    if el != bs.array[index - 1] && el!= bs.array[index + 1]
+      return el
+    end
+  end
+end
+
 
 

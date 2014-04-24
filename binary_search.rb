@@ -1,4 +1,5 @@
 class BinarySearch
+  attr_accessor :array
 
   def initialize(array)
     @array = array

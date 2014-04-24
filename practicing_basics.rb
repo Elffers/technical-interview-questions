@@ -1,4 +1,4 @@
-# Playing with .next
+# Playing with string.next - returns the next n entries of a 'dictionary'
 
 def next_n_entries(string, iterations)
   array = []
