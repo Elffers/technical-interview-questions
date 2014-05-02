@@ -11,12 +11,15 @@ describe 'uniquestring' do
   it 'should return 2 as the first unique element' do
     expect(first_uniq(array1)).to eq 2
   end
+
   it 'should return 4 as the first unique element' do
     expect(first_uniq(array2)).to eq 5
   end
+
   it 'should return 1 as the first unique element' do
     expect(first_uniq(array3)).to eq 1
   end
+
   it 'should return 2 as the first unique element' do
     expect(first_uniq(array4)).to eq 2
   end
