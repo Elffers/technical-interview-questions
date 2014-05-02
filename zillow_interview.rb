@@ -1,3 +1,5 @@
+# Given an array of numbers and an integer, return all pairs contained in the array whose sum equals that integer
+
 # first pass
 def complement(array, sum)
   operands = array.select {|num| num <= sum}
