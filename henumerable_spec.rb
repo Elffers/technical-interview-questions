@@ -23,6 +23,16 @@ describe 'HEnumerable' do
     end
   end
 
+  context '#any?' do
+    it 'returns false if no elements match block' do
+      expect(henumerator.any? { |x| false }).to eq false
+    end
+
+    it 'returns true if at least one element does not match block' do
+      expect(henumerator.any? { |x| x % 2 == 0 }).to eq true
+    end
+  end
+
   context '#map' do
     it "maps element to whatever the block yields" do
       expect(henumerator.map { |x| x * 2 }).to eq [2, 4]

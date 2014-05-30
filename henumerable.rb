@@ -7,6 +7,13 @@ module HEnumerable
     true
   end
 
+  def any?
+    each do |el|
+      return true if yield el
+    end
+    false
+  end
+
   def each_cons(slice, &block)
   end
 
