@@ -2,7 +2,7 @@ module HEnumerable
 
   def all?
     each do |el|
-      return false if yield(el) == false
+      return false unless yield(el)
     end
     true
   end
