@@ -1,32 +1,50 @@
 require_relative 'henumerable'
 
-describe 'HEnumerable' do
-
-end
-
-
-class SortedList
-  include FakeEnumerable
-
-  def initialize
-    @data = []
-  end
-
-  def <<(new_element)
-    @data << new_element
-    @data.sort!
-
-    self
-  end
+class HEnumerator
+  include HEnumerable
 
   def each
-    if block_given?
-      @data.each { |e| yield(e) }
-    else
-      FakeEnumerator.new(self, :each)
+    yield 1
+    yield 2
+    return -5
+  end
+
+end
+describe 'HEnumerable' do
+  let(:henumerator) { HEnumerator.new }
+
+  context '#map' do
+
+    it "maps element to whatever the block yields" do
+      expect(henumerator.map { |x| x * 2 }).to eq [2, 4]
     end
   end
+
 end
+
+
+# class SortedList
+#   include FakeEnumerable
+
+#   def initialize
+#     @data = []
+#   end
+
+#   def <<(new_element)
+#     @data << new_element
+#     @data.sort!
+
+#     self
+#   end
+
+#   def each
+#     if block_given?
+#       @data.each { |e| yield(e) }
+#     else
+#       FakeEnumerator.new(self, :each)
+#     end
+#   end
+# end
 
 # require "minitest/autorun"
 
