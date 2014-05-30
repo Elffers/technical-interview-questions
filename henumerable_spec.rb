@@ -13,6 +13,16 @@ end
 describe 'HEnumerable' do
   let(:henumerator) { HEnumerator.new }
 
+  context '#all?' do
+    it 'returns true if all elements match block' do
+      expect(henumerator.all? { |x| true }).to eq true
+    end
+
+    it 'returns false if at least one element does not match block' do
+      expect(henumerator.all? { |x| x % 2 == 0 }).to eq false
+    end
+  end
+
   context '#map' do
     it "maps element to whatever the block yields" do
       expect(henumerator.map { |x| x * 2 }).to eq [2, 4]

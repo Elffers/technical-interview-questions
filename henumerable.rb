@@ -1,7 +1,13 @@
 module HEnumerable
 
-  def each_cons(slice, &block)
+  def all?
+    each do |el|
+      return false if yield(el) == false
+    end
+    true
+  end
 
+  def each_cons(slice, &block)
   end
 
   def map
