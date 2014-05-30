@@ -30,6 +30,10 @@ module HEnumerable
     output
   end
 
+  def none?(&block)
+    !any?(&block)
+  end
+
   def select
     output = []
     each do |el|

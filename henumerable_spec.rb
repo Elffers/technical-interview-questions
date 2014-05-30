@@ -39,6 +39,17 @@ describe 'HEnumerable' do
     end
   end
 
+  context '#none?' do
+    it 'returns false if at least one element matches block' do
+      expect(henumerator.none? { |x| x % 2 == 0 }).to eq false
+    end
+
+    it 'returns true if no elements match block' do
+      expect(henumerator.none? { |x| false }).to eq true
+    end
+
+  end
+
   context '#select' do
     it 'returns elements matching the block' do
       expect(henumerator.select { |x| x % 2 == 0 }).to eq [2]
