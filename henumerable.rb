@@ -18,6 +18,11 @@ module HEnumerable
   end
 
   def select
+    output = []
+    each do |el|
+      output.push el if yield el
+    end
+    output
   end
 
   def sort_by

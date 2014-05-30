@@ -14,9 +14,14 @@ describe 'HEnumerable' do
   let(:henumerator) { HEnumerator.new }
 
   context '#map' do
-
     it "maps element to whatever the block yields" do
       expect(henumerator.map { |x| x * 2 }).to eq [2, 4]
+    end
+  end
+
+  context '#select' do
+    it 'returns elements matching the block' do
+      expect(henumerator.select { |x| x % 2 == 0 }).to eq [2]
     end
   end
 
