@@ -3,9 +3,15 @@ require_relative 'henumerable'
 class HEnumerator
   include HEnumerable
 
+  def initialize(default = [1, 2])
+    @default = default
+  end
+
   def each
-    yield 1
-    yield 2
+    @default.each do |el|
+      yield el
+    end
+
     return -5
   end
 
@@ -36,6 +42,24 @@ describe 'HEnumerable' do
   context '#collect' do
     it "maps element to whatever the block yields" do
       expect(henumerator.collect { |x| x * 2 }).to eq [2, 4]
+    end
+  end
+
+  context '#count' do
+    it 'returns number of elements' do
+      expect(henumerator.count).to eq 2
+    end
+
+    it 'returns number of elements that match block' do
+      expect(henumerator.count { |x| x % 2 == 0 } ).to eq 1
+    end
+
+    it 'returns number of elements that match argument' do
+      expect(henumerator.count 2).to eq 1
+    end
+
+    it 'returns number of elements that match nil argument' do
+      expect(HEnumerator.new([nil, true, false, nil]).count nil).to eq 2
     end
   end
 

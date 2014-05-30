@@ -1,5 +1,7 @@
 module HEnumerable
 
+  NOTHING = Object.new
+
   def all?
     each do |el|
       return false unless yield(el)
@@ -12,6 +14,20 @@ module HEnumerable
       return true if yield el
     end
     false
+  end
+
+  def count(target=NOTHING)
+    count = 0
+    each do |el|
+      if block_given?
+        count += 1 if yield(el)
+      elsif NOTHING != target
+        count += 1 if el == target
+      else
+        count += 1
+      end
+    end
+    count
   end
 
   def each_cons(slice, &block)
