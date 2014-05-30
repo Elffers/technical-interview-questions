@@ -30,6 +30,8 @@ module HEnumerable
     output
   end
 
+  alias_method :collect, :map
+
   def none?(&block)
     !any?(&block)
   end

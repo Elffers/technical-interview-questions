@@ -33,6 +33,12 @@ describe 'HEnumerable' do
     end
   end
 
+  context '#collect' do
+    it "maps element to whatever the block yields" do
+      expect(henumerator.collect { |x| x * 2 }).to eq [2, 4]
+    end
+  end
+
   context '#map' do
     it "maps element to whatever the block yields" do
       expect(henumerator.map { |x| x * 2 }).to eq [2, 4]
