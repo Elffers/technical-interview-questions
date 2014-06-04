@@ -30,7 +30,20 @@ module HEnumerable
     count
   end
 
-  def each_cons(slice, &block)
+  def each_cons(slice)
+    array = []
+    each do |el|
+      array.push el
+      if array.size < slice
+        next
+      elsif array.size > slice
+        array.shift
+      end
+      # since we are yielding a copy of the array at the current state, it doens't matter that
+      # the array is being changed each time
+      yield array.dup
+    end
+    nil
   end
 
   def map

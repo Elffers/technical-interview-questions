@@ -18,6 +18,8 @@ class HEnumerator
 end
 describe 'HEnumerable' do
   let(:henumerator) { HEnumerator.new }
+  let(:henumerator2) { HEnumerator.new([1, 2, 3, 4, 5, 6]) }
+
 
   context '#all?' do
     it 'returns true if all elements match block' do
@@ -60,6 +62,20 @@ describe 'HEnumerable' do
 
     it 'returns number of elements that match nil argument' do
       expect(HEnumerator.new([nil, true, false, nil]).count nil).to eq 2
+    end
+  end
+
+  context '#each_cons' do
+    it 'returns nil' do
+      expect(henumerator.each_cons(1) {}).to eq nil
+    end
+
+    it 'yields consecutive elements' do
+      output = []
+      henumerator2.each_cons(2) do |chunk|
+        output.push chunk
+      end
+      expect(output).to eq [[1,2], [2,3], [3,4], [4,5], [5,6]]
     end
   end
 
