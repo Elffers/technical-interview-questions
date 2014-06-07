@@ -101,7 +101,11 @@ describe 'HEnumerable' do
       expect(henumerator.select { |x| x % 2 == 0 }).to eq [2]
     end
   end
-
+  context '#take' do
+    it 'returns the first n elements' do
+      expect(henumerator2.take(3)).to eq [1, 2, 3]
+    end
+  end
 end
 
 

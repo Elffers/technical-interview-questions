@@ -76,6 +76,18 @@ module HEnumerable
   def sort_by
   end
 
+  def take(n)
+    output = []
+    each do |el|
+      if output.size == n
+        return output
+      else 
+        output.push el
+      end
+    end
+    output
+  end
+
   def reduce()
   end
 
