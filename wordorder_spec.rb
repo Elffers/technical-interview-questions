@@ -1,9 +1,12 @@
 require_relative 'wordorder'
 
 describe 'word order' do
-  let(:string1){ "hello world" }
+  let(:string1){ TeamElizabetHString.new("hello world") }
   it 'reverses a two word string' do
-    expect(reverse_order(string1)).to eq "world hello"
+    expect(string1.reverse_order).to eq "world hello"
   end
 
+  it 'reverses letters in a word' do
+    expect(reverse_letters('pancakes')).to eq "sekacnap"
+  end
 end
