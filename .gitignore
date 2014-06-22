@@ -1,2 +1,4 @@
 .DS_Store
 *.swp
+doc/
+array_shift_bug.rb
