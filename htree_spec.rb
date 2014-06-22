@@ -10,5 +10,10 @@ describe HTree do
           expect(node.key).to eq "foo"
       end
     end
+    context 'left' do
+      it 'should read the left node' do
+        expect(node.left.key).to be nil
+      end
+    end
   end
 end

@@ -12,6 +12,11 @@ class HTree
       @key = key
       @value = value
     end
+
+    def left
+      Node.new()
+    end
+
   end
   
 end
