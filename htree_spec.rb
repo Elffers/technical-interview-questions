@@ -2,14 +2,13 @@ require_relative 'htree'
 
 describe HTree do
   let(:htree) { HTree.new }
-  context 'initialize' do
-    it 'has a root node' do
-      expect(htree.root).to be_an_instance_of Hash
-    end
-  end
 
-  context 'get' do
-    it 'reads the value of a given key' do
+  describe HTree::Node do
+    let(:node) { HTree::Node.new("foo", "bar") }
+    context 'initialize' do
+      it 'should have a key and value' do
+          expect(node.key).to eq "foo"
+      end
     end
   end
 end
