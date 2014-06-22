@@ -2,18 +2,17 @@
 #
 class HTree
   attr_accessor :root
+  # right now only works for two nodes.
+  # needs a way to find where to insert the new node
+  # recursive way?
 
   def insert(key, value)
     child = Node.new(key, value)
-    p child
     if !@root
       @root = child
     elsif @root.key < child.key
-      p "RIGHT"
       @root.right = child
     elsif @root.key > child.key
-      p "LEFT"
-      p "ROOT", @root
       @root.left = child
     end
   end
