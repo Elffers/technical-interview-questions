@@ -10,7 +10,7 @@ describe HTree do
     xit 'should read keys from left to right' do
       htree.insert(3, "bat")
       htree.insert(1, "bax")
-      expect(htree.traverse).to eq %w(fan fod foo)
+      expect(htree.traverse).to eq [1, 3, 5]
     end
   end
 
