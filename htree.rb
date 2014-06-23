@@ -24,24 +24,24 @@ class HTree
     if not current.left
       current.left = node
     else
-      while node.key < current.key
+      while node.key < current.key && current.left
          current  = current.left
-          p current
       end
+      current.left = node
     end
-    current 
   end
+
   def right_insert(node)
     current = @root
     if not current.right
       current.right = node
     else
-      while node.key < current.key
-         current  = current.right
-          p current
+      while node.key > current.key && current.right
+         current  = current.right 
+         p current
       end
+      current.right = node
     end
-    current 
   end
 
   class Node
