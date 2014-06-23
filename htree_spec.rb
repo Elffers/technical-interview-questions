@@ -18,14 +18,22 @@ describe HTree do
       expect(htree.root.left.left.key).to eq "fan"
     end
 
-  ## if keys of two nodes inserted are both less than the root, it the root of tree should rearrange itself
-
     it 'should insert node to the right correctly' do
       htree.insert("for", "bat")
       htree.insert("fox", "ban")
       expect(htree.root.right.key).to eq "for"
       expect(htree.root.right.right.key).to eq "fox"
     end
+    
+    it 'should insert right and left children correctly on same node' do
+      htree.insert("fod", "bat")
+      htree.insert("fox", "ban")
+      expect(htree.root.right.key).to eq "fox"
+      expect(htree.root.left.key).to eq "fod"
+    end
+
+    # if keys of two nodes inserted are both less than the root,
+    # it the root of tree should rearrange itself
   end
 
   describe HTree::Node do

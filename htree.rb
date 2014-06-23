@@ -38,7 +38,6 @@ class HTree
     else
       while node.key > current.key && current.right
          current  = current.right 
-         p current
       end
       current.right = node
     end
