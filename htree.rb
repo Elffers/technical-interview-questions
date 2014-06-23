@@ -6,6 +6,9 @@ class HTree
   # needs a way to find where to insert the new node
   # recursive way?
 
+  def traverse
+    
+  end
   def insert(key, value)
     child = Node.new(key, value)
     # this is to set the initial node if the tree is empty
@@ -18,7 +21,10 @@ class HTree
       self.left_insert(child) 
     end
   end
-  # method to keep going down the left or right sides to insert nodes properly
+
+  # Private methods to keep going down the left or right sides to insert nodes properly
+  ## Issue with restructing tree?
+
   def left_insert(node)
     current = @root
     if not current.left
