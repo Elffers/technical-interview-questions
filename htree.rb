@@ -1,5 +1,6 @@
 # Ruby implementation of Binary tree
-#
+# Saturday, 21 June 2014: ~2 hours (10pm-midnight)
+# Sunday, 22 June 2013: 17:30 - 19:00
 class HTree
   attr_accessor :root
   # right now only works for two nodes.
