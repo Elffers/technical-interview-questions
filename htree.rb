@@ -8,13 +8,40 @@ class HTree
 
   def insert(key, value)
     child = Node.new(key, value)
+    # this is to set the initial node if the tree is empty
     if !@root
       @root = child
+    # needs to traverse the children to find correct insertion point
     elsif @root.key < child.key
-      @root.right = child
+      self.right_insert(child)
     elsif @root.key > child.key
-      @root.left = child
+      self.left_insert(child) 
     end
+  end
+  # method to keep going down the left or right sides to insert nodes properly
+  def left_insert(node)
+    current = @root
+    if not current.left
+      current.left = node
+    else
+      while node.key < current.key
+         current  = current.left
+          p current
+      end
+    end
+    current 
+  end
+  def right_insert(node)
+    current = @root
+    if not current.right
+      current.right = node
+    else
+      while node.key < current.key
+         current  = current.right
+          p current
+      end
+    end
+    current 
   end
 
   class Node
