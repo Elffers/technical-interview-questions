@@ -19,12 +19,16 @@ describe HTree do
       expect(htree.root.key).to eq 5
     end
 
+    # this breaks if inserts 1 first and then 3
+
     it 'should insert node to the left correctly' do
       htree.insert(3, "bat")
       htree.insert(1, "bax")
       expect(htree.root.left.key).to eq 3
       expect(htree.root.left.left.key).to eq 1
     end
+
+    # similar, this breaks if inserts 9 and then 7
 
     it 'should insert node to the right correctly' do
       htree.insert(7, "bat")
@@ -42,6 +46,12 @@ describe HTree do
 
     # if keys of two nodes inserted are both less than the root,
     # it the root of tree should rearrange itself
+    it 'should reset root correctly' do
+      htree.insert(1, "bat")
+      htree.insert(3, "ban")
+      expect(htree.root.key).to eq 3
+      expect(htree.root.right.key).to eq 5
+    end
   end
 
   describe HTree::Node do
