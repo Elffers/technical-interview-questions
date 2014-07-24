@@ -37,21 +37,24 @@ describe RPNCalc do
       expect(calc.evaluate).to eq 2
     end
 
-    it 'evaluates multiplication' do
+    it 'evaluaes multiplication' do
       calc.input(5)
       calc.input(3)
       calc.input("*")
       expect(calc.evaluate).to eq 15
     end
 
-    it 'evalutates division' do
+    it 'evaluates integer division' do
       calc.input(6)
       calc.input(3)
       calc.input("/")
       expect(calc.evaluate).to eq 2
-
-
-
+    end
+    it 'evaluates integer division' do
+      calc.input(5)
+      calc.input(2)
+      calc.input("/")
+      expect(calc.evaluate).to eq 2.5
     end
   end
 

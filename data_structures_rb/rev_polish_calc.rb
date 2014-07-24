@@ -28,7 +28,7 @@ class RPNCalc
       when "-"
         operand1 - operand2
       when "/"
-        operand1/operand2
+        operand1.to_f/operand2.to_f
     end
   end
 end
