@@ -18,17 +18,20 @@ class RPNCalc
   end
 
   def evaluate
+    value = nil
     el = @stack[-1]
     i = @stack.index(el)
     operand2 = @stack[i-1]
     operand1 = @stack[i-2]
     case el
       when "+","*"
-        [operand1,operand2].reduce(el.to_sym)
+        value = [operand1,operand2].reduce(el.to_sym)
       when "-"
-        operand1 - operand2
+        value = operand1 - operand2
       when "/"
-        operand1.to_f/operand2.to_f
+        value = operand1.to_f/operand2.to_f
     end
+    @stack = []
+    value
   end
 end

@@ -56,6 +56,24 @@ describe RPNCalc do
       calc.input("/")
       expect(calc.evaluate).to eq 2.5
     end
+    it 'clears stack after evalutation' do
+      calc.input(5)
+      calc.input(2)
+      calc.input("/")
+      calc.evaluate
+      expect(calc.stack).to eq []
+    end
+
+    xit 'evalutates multiple operations with PEMDAS' do
+      calc.input(5)
+      calc.input(3)
+      calc.input("-")
+      calc.input(5)
+      calc.input(3)
+      calc.input("+")
+      calc.input("*")
+      exepct(calc.evaluate).to eq 16
+    end
   end
 
 end
