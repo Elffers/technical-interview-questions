@@ -1,4 +1,5 @@
 class RPNCalc
+  OPERATORS = %w[+ - * /]
   attr_accessor :stack
 
   def initialize 
@@ -6,7 +7,11 @@ class RPNCalc
   end
 
   def input(element)
-    @stack.push(element)
+    if OPERATORS.include? element 
+      evaluate(element)
+    else
+      @stack.push(element)
+    end
   end
 
   def pop
@@ -17,21 +22,19 @@ class RPNCalc
     end
   end
 
-  def evaluate
+  def evaluate(operator)
     value = nil
-    el = @stack[-1]
-    i = @stack.index(el)
-    operand2 = @stack[i-1]
-    operand1 = @stack[i-2]
-    case el
+    operand2 = pop
+    operand1 = pop
+    case operator
       when "+","*"
-        value = [operand1,operand2].reduce(el.to_sym)
+        value = [operand1,operand2].reduce(operator.to_sym)
       when "-"
         value = operand1 - operand2
       when "/"
         value = operand1.to_f/operand2.to_f
     end
-    @stack = []
+    @stack.push(value)
     value
   end
 end

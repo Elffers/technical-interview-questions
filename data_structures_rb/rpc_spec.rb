@@ -26,42 +26,31 @@ describe RPNCalc do
     it 'evaluates addition of 2 numbers' do
       calc.input(1)
       calc.input(2)
-      calc.input("+")
-      expect(calc.evaluate).to eq 3
+      expect(calc.input("+")).to eq 3
     end
 
     it 'evaluates subtraction' do
       calc.input(5)
       calc.input(3)
-      calc.input("-")
-      expect(calc.evaluate).to eq 2
+      expect(calc.input("-")).to eq 2
     end
 
     it 'evaluaes multiplication' do
       calc.input(5)
       calc.input(3)
-      calc.input("*")
-      expect(calc.evaluate).to eq 15
+      expect(calc.input("*")).to eq 15
     end
 
     it 'evaluates integer division' do
       calc.input(6)
       calc.input(3)
-      calc.input("/")
-      expect(calc.evaluate).to eq 2
+      expect(calc.input("/")).to eq 2
     end
+
     it 'evaluates integer division' do
       calc.input(5)
       calc.input(2)
-      calc.input("/")
-      expect(calc.evaluate).to eq 2.5
-    end
-    it 'clears stack after evalutation' do
-      calc.input(5)
-      calc.input(2)
-      calc.input("/")
-      calc.evaluate
-      expect(calc.stack).to eq []
+      expect(calc.input("/")).to eq 2.5
     end
 
     xit 'evalutates multiple operations with PEMDAS' do
@@ -72,7 +61,22 @@ describe RPNCalc do
       calc.input(3)
       calc.input("+")
       calc.input("*")
-      exepct(calc.evaluate).to eq 16
+      expect(calc.evaluate).to eq 16
+    end
+    it 'evaluates PEMDAS' do
+      calc.input(3)
+      calc.input(5)
+      calc.input(4)
+      calc.input("*")
+      expect(calc.input("+")).to eq 23
+    end
+
+    it 'evaluates PEMDAS 2' do
+      calc.input(3)
+      calc.input(5)
+      calc.input(4)
+      calc.input("+")
+      expect(calc.input("*")).to eq 27
     end
   end
 
