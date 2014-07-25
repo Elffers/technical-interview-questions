@@ -56,13 +56,10 @@ describe RPNCalc do
     it 'evalutates multiple operations with PEMDAS' do
       calc.input(5)
       calc.input(3)
-      p calc.input("-")
-      p calc.stack.inspect
+      calc.input("-")
       calc.input(5)
       calc.input(3)
-      p calc.stack
-      p calc.input("+")
-      p calc.stack
+      calc.input("+")
       expect(calc.input("*")).to eq 16
     end
     it 'evaluates PEMDAS' do
