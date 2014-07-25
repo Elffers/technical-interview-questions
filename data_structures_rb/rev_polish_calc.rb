@@ -8,10 +8,10 @@ class RPNCalc
 
   def input(element)
     if OPERATORS.include? element 
-      evaluate(element)
-    else
-      @stack.push(element)
+      element = evaluate(element)
     end
+    @stack.push(element)
+    element
   end
 
   def pop
@@ -34,7 +34,6 @@ class RPNCalc
       when "/"
         value = operand1.to_f/operand2.to_f
     end
-    @stack.push(value)
     value
   end
 end
