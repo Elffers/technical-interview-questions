@@ -5,27 +5,31 @@
 # the Pythagorean triple is 2mn, (m**2 - n**2), (m**2 + n**2)
 
 def find_triples(num)
-
-end
-
-def addends(num)
-  pairs = []
-  (1..num/2).each do |x|
-    pair = [x, num - x]
-    pairs.push pair
+  triples = []
+  (1..num).each do |n|
+    (2..num).each do |m|
+      a = 2*m*n
+      b = m**2 - n**2
+      c = m**2 + n**2
+      triple = [a, b, c].sort
+      if triple.any? {|x| x == 0 } or triple.any? {|x| x > num }
+        next
+      else
+        triples.push triple
+      end
+    end
   end
-  pairs
+  triples
 end
-
 
 context 'tests the thing' do
 
-  it 'returns all addends for a number' do
-    expect(addends(6)).to eq [[1,5], [2,4], [3, 3]]
+  it 'returns all triples under 6' do
+    expect(find_triples(6)).to eq [[3,4,5]]
   end
 
-  xit 'returns all triples under 6' do
-    expect(find_triples(6)).to eq [[3,4,5]]
+  it 'returns all triples under 10' do
+    expect(find_triples(10)).to eq [[3,4,5], [6, 8, 10]]
   end
 
 end
