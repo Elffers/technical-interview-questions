@@ -1,15 +1,24 @@
 # Find the first non-repeated character in a string
 
 def repeater(string)
-  store = Hash.new(0)
-  string.each_char do |letter|
-    store[letter] += 1
+  store = {}
+  string.chars.each_with_index do |letter, i|
+    if store.key? letter
+      store[letter][0] += 1
+    else
+      store[letter] = [1, i]
+    end
   end
-  store.each do |k, v|
-    return k if v == 1
+  sorted = store.sort_by do |k, v|
+    v.last
+  end
+  sorted.each do |pair|
+    return pair.first if pair.last.first == 1
   end
   nil
 end
+
+repeater("abacd")
 
 context 'repeater tests' do
   it 'works for 1 repeated character' do
