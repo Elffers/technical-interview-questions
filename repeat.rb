@@ -18,8 +18,6 @@ def repeater(string)
   nil
 end
 
-repeater("abacd")
-
 context 'repeater tests' do
   it 'works for 1 repeated character' do
     string = "abcda"
