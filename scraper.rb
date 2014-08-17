@@ -5,6 +5,8 @@ require 'open-uri'
 class Scraper
   attr_accessor :map
 
+  # Add url as argument in initialize and enqueue it so as to not have to
+  # 'prime the pump' by calling parse once first before populate
   def initialize
     @map = {}
     @queue = []
@@ -14,7 +16,6 @@ class Scraper
     doc = Nokogiri::HTML open(url)
     links = doc / "a"
     links = links.map { |link|
-      puts link;
       url + link.attributes["href"].value if link.attributes.include? "href"}
     @map[url] = links
     @queue.concat links
@@ -23,7 +24,6 @@ class Scraper
   def populate
     @queue.each do |link|
       if !@map.include? link
-        p link
         parse link
       end
     end
