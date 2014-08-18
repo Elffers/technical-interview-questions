@@ -33,11 +33,8 @@ module HEnumerable
   def each_cons(slice)
     array = []
     each do |el|
-      array.push el
-      if array.size < slice
-        next
-      elsif array.size > slice
-        array.shift
+      yield take(slice)
+      array.shift
       end
       # since we are yielding a copy of the array at the current state, it doens't matter that
       # the array is being changed each time
