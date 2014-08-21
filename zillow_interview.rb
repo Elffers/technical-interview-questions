@@ -1,32 +1,17 @@
 # Given an array of numbers and an integer, return all pairs contained in the array whose sum equals that integer
 
-# first pass
-def complement(array, sum)
-  operands = array.select {|num| num <= sum}
+def complement_1(array, sum)
   complements = []
-  operands.each do |operand|
+    array.each do |operand|
     complement = sum - operand
-    if array.include? complement
-      complements << complement
-    end
-  end
-  operands.zip(complements)
-end
-
-#refactor
-
-def complement2(array, sum)
-  operands = array.select {|num| num <= sum}
-  complements = operands.map do |operand|
-    complement = sum - operand
-    [operand, complement] if array.include? complement
+    complements.push [operand, complement] if array.include? complement
   end
   complements
 end
 
 # using hash
 
-def complements(array, sum)
+def complement_2(array, sum)
   elements = Set.new(array)
   complements = {}
   array.each do |num|
@@ -36,17 +21,16 @@ def complements(array, sum)
   complements
 end
 
-# as a class method
+context 'complement 1' do
+  let(:array){[9, 2, 3, 1, 4, 7, 5, 8, 6]}
+  it 'works' do
+    expect(complement_1(array, 8).sort_by{|x| x.first}).to eq  [[1,7], [2,6], [3, 5]]
+  end
+end
 
-class Array
-  require 'set'
-  def complements(sum)
-    elements = Set.new(self)
-    complements = {}
-    self.each do |num|
-      complement = sum - num
-      complements[num] = complement if elements.include?(complement)
-    end
-    complements
+context 'complement 2' do
+  let(:array){[9, 2, 3, 1, 4, 7, 5, 8, 6]}
+  it 'works' do
+    expect(complement_2(array, 8).sort_by{|x| x.first}).to eq  [[1,7], [2,6], [3, 5]]
   end
 end
