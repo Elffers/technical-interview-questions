@@ -24,15 +24,11 @@ end
 # O(2n) time, once to iterate through array, once to find nil element
 
 def finder2(array)
-  sorted = Array.new()
+  sorted = Array.new(array.length + 1)
   array.each do |num|
     sorted[num] = num
   end
-  missing = sorted.index(nil)
-  unless missing
-    missing = array.length
-  end
-  missing
+  sorted.index(nil)
 end
 
 context 'finder' do
