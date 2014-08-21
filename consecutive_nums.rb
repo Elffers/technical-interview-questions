@@ -27,7 +27,11 @@ def finder2(array)
   array.each do |num|
     sorted[num] = num
   end
-  sorted.index(nil)
+  missing = sorted.index(nil)
+  unless missing
+    missing = array.length
+  end
+  missing
 end
 
 context 'finder' do
