@@ -24,13 +24,13 @@ end
 context 'complement 1' do
   let(:array){[9, 2, 3, 1, 4, 7, 5, 8, 6]}
   it 'works' do
-    expect(complement_1(array, 8).sort_by{|x| x.first}).to eq  [[1,7], [2,6], [3, 5]]
+    expect(complement_1(array, 8).sort_by{|x| x.first}).to eq [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]]
   end
 end
 
 context 'complement 2' do
   let(:array){[9, 2, 3, 1, 4, 7, 5, 8, 6]}
   it 'works' do
-    expect(complement_2(array, 8).sort_by{|x| x.first}).to eq  [[1,7], [2,6], [3, 5]]
+    expect(complement_2(array, 8)).to eq({2=>6, 3=>5, 1=>7, 4=>4, 7=>1, 5=>3, 6=>2})
   end
 end
