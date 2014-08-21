@@ -9,9 +9,11 @@
 # operation is done in place, i.e. O(n) space
 
 def finder(array)
-  array.sort.each_with_index do |num, i|
+  sorted = array.sort
+  sorted.each_with_index do |num, i|
     return i if num != i
   end
+  sorted.length
 end
 
 # Solution 2:
@@ -34,8 +36,25 @@ context 'finder' do
     expect(finder array).to eq 1
   end
 
+  it 'returns 0 if first element is missing' do
+    array = [1,2]
+    expect(finder array).to eq 0
+  end
+
+  it 'returns largest element if last one is missing' do
+    array = [0,1]
+    expect(finder array).to eq 2
+  end
+end
+
+context 'finder2' do
   it '2nd method returns missing element' do
     array = [4, 0, 1, 3]
     expect(finder2 array).to eq 2
+  end
+
+  it 'returns last element if last element is missing'  do
+    array = [1, 0, 2,]
+    expect(finder2 array).to eq 3
   end
 end
