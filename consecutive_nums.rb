@@ -13,6 +13,7 @@ def finder(array)
   sorted.each_with_index do |num, i|
     return i if num != i
   end
+  # if missing element == n
   sorted.length
 end
 
@@ -55,6 +56,11 @@ context 'finder2' do
   it '2nd method returns missing element' do
     array = [4, 0, 1, 3]
     expect(finder2 array).to eq 2
+  end
+
+  it 'returns 0 if first element is missing' do
+    array = [1,2]
+    expect(finder2 array).to eq 0
   end
 
   it 'returns last element if last element is missing'  do
