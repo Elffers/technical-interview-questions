@@ -14,8 +14,8 @@ class HEnumerator
 
     return -5
   end
-
 end
+
 describe 'HEnumerable' do
   let(:henumerator) { HEnumerator.new }
   let(:henumerator2) { HEnumerator.new([1, 2, 3, 4, 5, 6]) }
@@ -93,7 +93,6 @@ describe 'HEnumerable' do
     it 'returns true if no elements match block' do
       expect(henumerator.none? { |x| false }).to eq true
     end
-
   end
 
   context '#select' do
@@ -101,6 +100,7 @@ describe 'HEnumerable' do
       expect(henumerator.select { |x| x % 2 == 0 }).to eq [2]
     end
   end
+
   context '#take' do
     it 'returns the first n elements' do
       expect(henumerator2.take(3)).to eq [1, 2, 3]

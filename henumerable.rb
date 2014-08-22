@@ -35,7 +35,6 @@ module HEnumerable
     each do |el|
       yield take(slice)
       array.shift
-      end
       # since we are yielding a copy of the array at the current state, it doens't matter that
       # the array is being changed each time
       yield array.dup
