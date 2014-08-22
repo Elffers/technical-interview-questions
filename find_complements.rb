@@ -1,4 +1,5 @@
 # Given an array of numbers and an integer, return all pairs contained in the array whose sum equals that integer
+# (Zillow mock interview question)
 
 # O(n**2) time: iterate through array, then iterate again per element
 # (.include?)
