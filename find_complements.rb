@@ -1,5 +1,9 @@
 # Given an array of numbers and an integer, return all pairs contained in the array whose sum equals that integer
 
+# O(n**2) time: iterate through array, then iterate again per element
+# (.include?)
+# O(2n) space
+
 def complement_1(array, sum)
   complements = []
     array.each do |operand|
@@ -10,6 +14,8 @@ def complement_1(array, sum)
 end
 
 # using hash
+# O(n) for iteration, .include on Set is constant lookup
+# O(2n) space
 
 def complement_2(array, sum)
   elements = Set.new(array)
@@ -31,6 +37,6 @@ end
 context 'complement 2' do
   let(:array){[9, 2, 3, 1, 4, 7, 5, 8, 6]}
   it 'works' do
-    expect(complement_2(array, 8)).to eq({2=>6, 3=>5, 1=>7, 4=>4, 7=>1, 5=>3, 6=>2})
+    expect(complement_2(array, 8)).to eq( {2=>6, 3=>5, 1=>7, 4=>4, 7=>1, 5=>3, 6=>2} )
   end
 end
