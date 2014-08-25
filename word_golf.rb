@@ -12,32 +12,30 @@ require 'open-uri'
 # VALID_WORDS = words.select { |x| x if x.length == 4 }
 # somehow index the words for faster lookup
 
+f = File.open("fours.txt", "r").readlines
+VALID_WORDS = f.map {|word| word.chop}
+
+p VALID_WORDS
 def word_index
   output = {}
   VALID_WORDS.each do |word|
     output[word] = []
+    VALID_WORDS.each do |target|
+      output[word].push(target) if one_away(word, target)
+    end
   end
+  output
 end
+
+
+# compares each letter of each word against the other and makes sure there is
+# only one mismatch
 
 def one_away(word, target)
-
-end
-
-def transform(word)
-end
-
-context 'one_away' do
-  it 'returns true if words differ by one letter' do
-    expect(one_away("park", "bark")).to eq true
+  zipped = word.chars.zip(target.chars)
+  bools= zipped.map do |pair|
+    pair.first == pair.last
   end
-
-  it 'returns false if words differ by more than one letter' do
-    expect(one_away("park", "tart")).to eq false
-  end
-
-  it 'returns false if no letters differ' do
-    expect(one_away("park", "park")).to eq false
-
-  end
+  bools.count(false) == 1
 end
-
+p word_index
