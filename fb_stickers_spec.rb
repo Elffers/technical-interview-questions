@@ -17,3 +17,17 @@ context "add_sticker" do
     expect(counts["c"]).to eq 1
   end
 end
+
+context "count_letters" do
+  it "returns correct count for letters" do
+    expect(count_letters("faa")).to eq({"f" => 1, "a" =>2})
+  end
+end
+
+context "bar" do
+  it 'returns correct number of stickers needed' do
+    expect(bar "coffee kebab").to eq 3
+    expect(bar "book").to eq 1
+    expect(bar "ffacebook").to eq 2
+  end 
+end

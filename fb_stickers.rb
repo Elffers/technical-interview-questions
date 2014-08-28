@@ -25,6 +25,13 @@ STICKER = {
   'k' => 1
 }
 
+# Solution 1:
+# Start with one sticker
+# Iterate through characters in string (stripped of white space)
+# Decrement count for each letter. If count reaches 0, add a sticker.
+# Time complexity: O(n)
+# Space complexity: In place (plus space for sticker hash table)
+
 def foo(string)
   string = string.delete(' ')
   counts = STICKER.dup
@@ -43,6 +50,27 @@ end
 def add_sticker(counts)
   STICKER.each do |letter, count|
     counts[letter] += count
+  end
+  counts
+end
+
+# Solution 2: 
+# Count all the letters
+# Divide by sticker count
+# Find max
+
+def bar(string)
+  string = string.delete(' ')
+  counts = count_letters(string)
+  string.chars.map do |letter|
+    counts[letter] / STICKER[letter]
+  end.max
+end
+
+def count_letters(string)
+  counts = Hash.new(0)
+  string.chars.each do |letter|
+    counts[letter] += 1
   end
   counts
 end
