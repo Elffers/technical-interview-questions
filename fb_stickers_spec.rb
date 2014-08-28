@@ -6,7 +6,6 @@ context "foo" do
     expect(foo "book").to eq 1
     expect(foo "ffacebook").to eq 2
   end 
-
 end
 
 context "add_sticker" do

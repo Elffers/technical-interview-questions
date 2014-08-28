@@ -1,4 +1,4 @@
-# Facebook logo stickers cost $2 each from the company store.
+# Facebook logo stickers cost2 each from the company store.
 # I have an idea. I want to cut up the stickers, and use the
 # letters to make other words/phrases. A Facebook logo sticker
 # contains only the word 'facebook', in all lower-case letters.
@@ -16,17 +16,17 @@
 # potential non-letter characters in the string are spaces.
 
 STICKER = {
-  "f" => 1,
-  "a" => 1,
-  "c" => 1,
-  "e" => 1,
-  "b" => 1,
-  "o" => 2,
-  "k" => 1
+  'f' => 1,
+  'a' => 1,
+  'c' => 1,
+  'e' => 1,
+  'b' => 1,
+  'o' => 2,
+  'k' => 1
 }
 
 def foo(string)
-  string = string.delete(" ")
+  string = string.delete(' ')
   counts = STICKER.dup
   stickers = 1
   string.chars.each do |letter|
@@ -38,12 +38,11 @@ def foo(string)
     end
   end
   stickers
-
 end
 
 def add_sticker(counts)
   STICKER.each do |letter, count|
-    counts[letter] += count 
+    counts[letter] += count
   end
   counts
 end
