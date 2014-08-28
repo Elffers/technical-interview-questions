@@ -26,30 +26,22 @@ STICKER = {
 }
 
 def foo(string)
-  counts = STICKER
-  p "first", counts
+  string = string.delete(" ")
+  counts = STICKER.dup
   stickers = 1
   string.chars.each do |letter|
     if counts[letter] == 0
       add_sticker(counts)
       stickers += 1
+    else
+      counts[letter] -= 1
     end
-    counts[letter] -= 1
   end
   stickers
 
 end
 
-def count_letters(string)
-  counts = Hash.new(0)
-  string.chars.each do |letter|
-    counts[letter] += 1
-  end
-  counts
-end
-
 def add_sticker(counts)
-  p STICKER
   STICKER.each do |letter, count|
     counts[letter] += count 
   end

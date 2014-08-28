@@ -1,18 +1,12 @@
 require_relative 'fb_stickers'
 
 context "foo" do
-  xit 'returns correct number of stickers needed' do
+  it 'returns correct number of stickers needed' do
     expect(foo "coffee kebab").to eq 3
     expect(foo "book").to eq 1
     expect(foo "ffacebook").to eq 2
   end 
 
-end
-
-context "count_letters" do
-  it "returns correct count for letters" do
-    expect(count_letters("faa")).to eq({"f" => 1, "a" =>2})
-  end
 end
 
 context "add_sticker" do
