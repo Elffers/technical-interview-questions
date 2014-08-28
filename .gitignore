@@ -2,3 +2,4 @@
 *.swp
 doc/
 array_shift_bug.rb
+*.pyc
