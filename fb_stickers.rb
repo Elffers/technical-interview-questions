@@ -29,8 +29,8 @@ STICKER = {
 # Start with one sticker
 # Iterate through characters in string (stripped of white space)
 # Decrement count for each letter. If count reaches 0, add a sticker.
-# Time complexity: O(n)
-# Space complexity: In place (plus space for sticker hash table)
+# Time complexity: O(n+ m), where O(m) is needed for adding a sticker.
+# Space complexity: In place (plus space for sticker hash table, so O(n+m)
 
 def foo(string)
   string = string.delete(' ')
@@ -54,10 +54,12 @@ def add_sticker(counts)
   counts
 end
 
-# Solution 2: 
+# Solution 2:
 # Count all the letters
 # Divide by sticker count
 # Find max
+# O(3n) : count_letters is O(n), .map is O(n), .max is O(n)
+# Space complexity: O(n + m), where m is space for STICKERS
 
 def bar(string)
   string = string.delete(' ')
