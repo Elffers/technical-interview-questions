@@ -1,3 +1,4 @@
+require 'Benchmark'
 # Facebook logo stickers cost2 each from the company store.
 # I have an idea. I want to cut up the stickers, and use the
 # letters to make other words/phrases. A Facebook logo sticker
@@ -75,4 +76,15 @@ def count_letters(string)
     counts[letter] += 1
   end
   counts
+end
+
+Benchmark.bm do |x|
+  x.report { 20000.times do ; foo("coffee kebab") ;end }
+  x.report { 20000.times do ; foo("ffacebook") ;end }
+  x.report { 20000.times do ; foo("book") ;end }
+
+
+  x.report { 20000.times do ; bar("coffee kebab") ;end }
+  x.report { 20000.times do ; bar("ffacebook") ;end }
+  x.report { 20000.times do ; bar("book") ;end }
 end
