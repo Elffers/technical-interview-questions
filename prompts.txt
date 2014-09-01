@@ -1,0 +1,14 @@
+Question 1: 
+You have a list [5,4,12,5,3,...n], return a list such that the first element is the multiplication of all the elements in the list EXCEPT the first, the second is a multiplication of all the elements EXCEPT the second. Do it in O(n), and do not use division operation.
+
+Question 2:
+Facebook logo stickers cost $2 each from the company store. I have an idea. I want to cut up the stickers, and use the letters to make other words/phrases. A Facebook logo sticker contains only the word 'facebook', in all lower-case letters.
+Write a function that, given a string consisting of a word or words made up of letters from the word 'facebook', outputs an integer with the number of stickers I will need to buy. foo('coffee kebab') -> 3 foo('book') -> 1 foo('ffacebook') -> 2
+You can assume the input you are passed is valid, that is, does not contain any non-'facebook' letters, and the only potential non-letter characters in the string are spaces.
+
+NOTE: do not Google for solution.
+
+Question 3:
+Given a string "hello people, or Mordor!"
+Reverse the word sequence as follows: "Mordor! or people, hello"
+
