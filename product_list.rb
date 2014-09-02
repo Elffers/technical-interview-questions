@@ -11,3 +11,10 @@ def product_map(array)
     a.reduce(:*)
   end
 end
+
+def product_map2(array)
+  product = array.reduce(:*)
+  array.map do |el|
+    product / el 
+  end
+end
