@@ -15,7 +15,9 @@ describe Ranker do
     end
   end
   context 'rank' do
-    xit 'ranks the teams correctly' do
+    it 'ranks the teams correctly' do
+      ranker.rank
+      expect(ranker.rankings["Seahawks"]).to eq 6
     end
   end
 end

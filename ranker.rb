@@ -5,13 +5,14 @@
 
 
 class Ranker
-  attr_reader :games
+  attr_reader :games, :rankings
   def initialize input
     @games = input.map { |line| line.delete("\n") }
+    @rankings = Hash.new 0
   end
 
   def parse
-    @games.map do |game|
+    @games = @games.map do |game|
       game.sub! /^\d+\)/, ""
       t1, t2 = game.split ","
       team_1 = (/.*(?=:)/).match(t1).to_s.strip!
@@ -22,19 +23,25 @@ class Ranker
     end
   end
 
-  def ranker(team_1, score_1, team_2, score_2)
-    if score_1 > score_2
-      winner = team_1
-      loser = team_2
-      return winner, loser
-    elsif team_1_score < team_2_score
-      winner = team_2_name
-      loser = team_1_name
-      return winner, loser
-    else
-      t1 = team_1_name
-      t2 = team_2_name
-      return "tie",t1, t2
+  def rank
+    parse
+    @games.each do |game|
+      team_1 = game[0]
+      score_1 = game[1]
+      team_2 = game[2]
+      score_2 = game[3]
+
+      @rankings[team_1]
+      @rankings[team_2]
+
+      if score_1 > score_2
+        @rankings[team_1] += 3
+      elsif score_1 < score_2
+        @rankings[team_2] += 3
+      else
+        @rankings[team_1] += 1
+        @rankings[team_2] += 1
+      end
     end
   end
 end
