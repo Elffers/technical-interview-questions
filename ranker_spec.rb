@@ -18,6 +18,9 @@ describe Ranker do
     it 'ranks the teams correctly' do
       ranker.rank
       expect(ranker.rankings["Seahawks"]).to eq 6
+      expect(ranker.rankings["Patriots"]).to eq 1
+      expect(ranker.rankings["Cowboys"]).to eq 1
+      expect(ranker.rankings["Broncos"]).to eq 3
     end
   end
 end

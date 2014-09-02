@@ -31,9 +31,6 @@ class Ranker
       team_2 = game[2]
       score_2 = game[3]
 
-      @rankings[team_1]
-      @rankings[team_2]
-
       if score_1 > score_2
         @rankings[team_1] += 3
       elsif score_1 < score_2
