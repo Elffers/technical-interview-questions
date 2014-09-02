@@ -14,11 +14,16 @@ class Ranker
     if team_1_score > team_2_score
       winner = (/.*(?=:)/).match(team_1).to_s
       loser = (/.*(?=:)/).match(team_2).to_s
-    else
+      return winner, loser
+    elsif team_1_score < team_2_score
       winner = (/.*(?=:)/).match(team_2).to_s.strip!
       loser = (/.*(?=:)/).match(team_1).to_s.strip!
+      return winner, loser
+    else
+      t1 = (/.*(?=:)/).match(team_1).to_s.strip!
+      t2 = (/.*(?=:)/).match(team_2).to_s.strip!
+      return "tie",t1, t2
     end
-    return winner, loser
   end
 end
 
