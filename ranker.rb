@@ -31,18 +31,11 @@ class Ranker
 
   def output
     rank
-    raw = {}
-    @rankings.each do |game, rank|
-      if raw.has_key? rank
-        raw[rank].push game
-      else
-        raw[rank] = [game]
-      end
-    end
-    ranks = raw.sort_by { |rank, games| rank }.reverse
+    raw = @rankings.keys.group_by { |team| @rankings[team] }
+    ranks = raw.sort_by { |rank, games| rank }
     output = []
-    ranks.each_with_index do |array, i|
-      array.last.sort.each do |team|
+    ranks.reverse_each.with_index do |(rank, teams), i|
+      teams.sort.each do |team|
         output.push "#{i+1}) #{team}"
       end
     end
