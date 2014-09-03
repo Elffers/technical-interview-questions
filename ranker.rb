@@ -10,13 +10,8 @@ class Ranker
 
   def parse
     @games = @games.map do |game|
-      game.sub! /^\d+\)/, ""
-      t1, t2 = game.split ","
-      team_1 = (/.*(?=:)/).match(t1).to_s.strip!
-      team_2 = (/.*(?=:)/).match(t2).to_s.strip!
-      score_1 = /\d+/.match(t1).to_s.to_i
-      score_2 = /\d+/.match(t2).to_s.to_i
-      [team_1, score_1, team_2, score_2]
+      /^\d+\) (?<team_1>.*?): (?<score_1>\d+), (?<team_2>.*?):\s(?<score_2>\d+)/ =~ game
+      [team_1, score_1.to_i, team_2, score_2.to_i]
     end
   end
 
@@ -59,6 +54,7 @@ class Ranker
     output
   end
 end
+
 games = ARGF.each_line
 ranker = Ranker.new games
 puts ranker.output
