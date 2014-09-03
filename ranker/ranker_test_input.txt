@@ -1,0 +1,6 @@
+1) Seahawks: 10, Patriots: 3
+2) Ravens: 10, Cowboys: 10
+3) Cowboys: 14, Broncos: 28
+4) Patriots: 35, Broncos: 35
+5) Broncos: 21, Seahawks: 28
+6) Seahawks: 35, Ravens: 31
