@@ -17,12 +17,7 @@ class Ranker
 
   def rank
     parse
-    @games.each do |game|
-      team_1 = game[0]
-      score_1 = game[1]
-      team_2 = game[2]
-      score_2 = game[3]
-
+    @games.each do |team_1, score_1, team_2, score_2|
       if score_1 > score_2
         @rankings[team_1] += 3
       elsif score_1 < score_2
