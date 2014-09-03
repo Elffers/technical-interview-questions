@@ -1,8 +1,5 @@
 # 9/1/14 (7 minutes)
-#line parser, returns winner and loser
-# ranker puts teams in hash
-# output: prints to stdout
-
+# 9/2/14 (3 hours)
 
 class Ranker
   attr_reader :games, :rankings
@@ -41,6 +38,27 @@ class Ranker
       end
     end
   end
-end
 
-# games = ARGV.each_line
+  def output
+    rank
+    raw = {}
+    @rankings.each do |game, rank|
+      if raw.has_key? rank
+        raw[rank].push game
+      else
+        raw[rank] = [game]
+      end
+    end
+    ranks = raw.sort_by { |rank, games| rank }.reverse
+    output = []
+    ranks.each_with_index do |array, i|
+      array.last.sort.each do |team|
+        output.push "#{i+1}) #{team}"
+      end
+    end
+    output
+  end
+end
+games = ARGF.each_line
+ranker = Ranker.new games
+puts ranker.output
