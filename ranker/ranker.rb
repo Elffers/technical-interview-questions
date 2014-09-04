@@ -1,17 +1,17 @@
 #!/usr/bin/env ruby
-# things that make a script executable are the executable bit set and a
+# Things that make a script executable are the executable bit set and a
 # shebang specification. I.e., chmod +x filename.rb
 
 class Ranker
   attr_reader :games, :rankings
 
-  # sanitizes input file, instantiates rankings hash
+  # Sanitizes input file, instantiates rankings hash
   def initialize input
     @games = input.map { |line| line.delete("\n") }
     @rankings = Hash.new 0
   end
 
-  # parses each line of input file, captures data and stores them to variables
+  # Parses each line of input file, captures data and stores them to variables
   # Ex: For a line in input "1)  Seattle: 28, Patriots: 30" would return an
   # array ["Seattle", 28, "Patriots, 30"]
   def parse
@@ -22,7 +22,7 @@ class Ranker
   end
 
   # Attribute points to each team: 3 for a win, 1 for tie, 0 for loss
-  # Sets those scores in @rankings hash
+  # Stores those scores as values in @rankings hash (keys are team names)
   def score
     parse
     @games.each do |team_1, score_1, team_2, score_2|
@@ -37,12 +37,18 @@ class Ranker
     end
   end
 
+  # Creates new hash ('ranks') with rankings as keys and array of all teams with that
+  # rank as values. Sorting this hash by rank returns array of arrays with
+  # format: [9, ["Seahawks, Ravens"]], with lowest rank first.
   def rank
     score
-    raw = @rankings.keys.group_by { |team| @rankings[team] }
-    raw.sort_by { |rank, games| rank }
+    ranks = @rankings.keys.group_by { |team| @rankings[team] }
+    ranks.sort_by { |rank, games| rank }
   end
 
+  # Iterates array returned from rank method in reverse with index. Since
+  # reversing array puts the highest-scoring team first, the index corresponds
+  # to the team's rank.
   def output
     rankings = rank
     output = []
