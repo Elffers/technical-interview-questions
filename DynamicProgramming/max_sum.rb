@@ -1,13 +1,14 @@
 require 'benchmark'
 # Given an array of integers, find the subset with the maximum sum, where
 # the subset does not contain adjacent numbers.
+#  E.g. given [6, 4, 5, 7, 1]
+#  max subset would be [1, 5, 2]
 
 # Brute force solution
 
 def max array
   sums = []
   array.each_with_index do |n, i|
-
 
   end
 end
