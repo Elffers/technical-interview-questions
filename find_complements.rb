@@ -28,6 +28,14 @@ def complement_2(array, sum)
   complements
 end
 
+# O(2n) + runtime of &
+# O(3n) space
+def complement_3 array, sum
+  complements = array.map {|x| sum - x }
+  intersection = array & complements
+  intersection.map {|num| [num, sum - num ] }
+end
+
 context 'complement 1' do
   let(:array){[9, 2, 3, 1, 4, 7, 5, 8, 6]}
   it 'works' do
@@ -39,5 +47,16 @@ context 'complement 2' do
   let(:array){[9, 2, 3, 1, 4, 7, 5, 8, 6]}
   it 'works' do
     expect(complement_2(array, 8)).to eq( {2=>6, 3=>5, 1=>7, 4=>4, 7=>1, 5=>3, 6=>2} )
+  end
+end
+
+context 'complement 3' do
+  let(:array){[9, 2, 3, 1, 4, 7, 5, 8, 6]}
+  it 'works' do
+    array = [1, 2, 3, 5]
+    expect(complement_3(array, 7)).to eq [[2, 5], [5, 2]]
+  end
+  it 'works' do
+    expect(complement_3(array, 8).sort_by{|x| x.first}).to eq [[1, 7], [2, 6], [3, 5], [4, 4], [5, 3], [6, 2], [7, 1]]
   end
 end
