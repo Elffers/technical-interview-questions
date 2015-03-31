@@ -3,19 +3,27 @@
 #  sure that every transformation results in another valid word.
 #  A move counts as movin a single letter into another one.
 
-require 'open-uri'
-
+#require 'open-uri'
 # list = "http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt"
 # word_list = open(list)
 # words = word_list.map {|word| word.chop }
 
 # VALID_WORDS = words.select { |x| x if x.length == 4 }
-# somehow index the words for faster lookup
 
-f = File.open("fours.txt", "r").readlines
-VALID_WORDS = f.map {|word| word.chop}
+f = File.readlines("fours.txt")
+VALID_WORDS = f.map { |word| word.chop }
 
-p VALID_WORDS
+# compares each letter of each word against the other and makes
+# sure there is only one mismatch
+
+def one_away(word, target)
+  zipped = word.chars.zip(target.chars)
+  bools= zipped.map do |pair|
+    pair.first == pair.last
+  end
+  bools.count(false) == 1
+end
+
 def word_index
   output = {}
   VALID_WORDS.each do |word|
@@ -27,15 +35,18 @@ def word_index
   output
 end
 
+WORD_INDEX = word_index
 
-# compares each letter of each word against the other and makes sure there is
-# only one mismatch
+# breadth-first search
 
-def one_away(word, target)
-  zipped = word.chars.zip(target.chars)
-  bools= zipped.map do |pair|
-    pair.first == pair.last
+def transform(word, target)
+  queue = []
+  queue.concat WORD_INDEX[word]
+  current = queue.shift
+  while current != target
+    queue.concat WORD_INDEX[current]
+    p current
+    current = queue.shift
   end
-  bools.count(false) == 1
+  current
 end
-p word_index

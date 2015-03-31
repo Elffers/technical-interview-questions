@@ -12,7 +12,12 @@ context 'one_away' do
 
   it 'returns false if no letters differ' do
     expect(one_away("park", "park")).to eq false
-
   end
+end
+context 'transform' do
+  it 'returns the target word' do
+    expect(transform("park", "dart")).to eq ["part", "dart"]
+  end
+
 end
 
