@@ -79,12 +79,12 @@ def count_letters(string)
 end
 
 Benchmark.bm do |x|
-  x.report { 20000.times do ; foo("coffee kebab") ;end }
-  x.report { 20000.times do ; foo("ffacebook") ;end }
-  x.report { 20000.times do ; foo("book") ;end }
+  x.report { 200000.times do ; foo("coffee kebab") ;end }
+  x.report { 200000.times do ; foo("ffacebook") ;end }
+  x.report { 200000.times do ; foo("book") ;end }
 
 
-  x.report { 20000.times do ; bar("coffee kebab") ;end }
-  x.report { 20000.times do ; bar("ffacebook") ;end }
-  x.report { 20000.times do ; bar("book") ;end }
+  x.report { 200000.times do ; bar("coffee kebab") ;end }
+  x.report { 200000.times do ; bar("ffacebook") ;end }
+  x.report { 200000.times do ; bar("book") ;end }
 end
