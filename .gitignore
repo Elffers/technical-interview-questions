@@ -3,3 +3,6 @@
 doc/
 array_shift_bug.rb
 *.pyc
+word_index.txt
+IntegerArray.txt
+valerie.rb
